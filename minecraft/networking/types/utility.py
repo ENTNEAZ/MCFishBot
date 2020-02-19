@@ -1,11 +1,12 @@
 """Minecraft data types that are used by packets, but don't have a specific
    network representation.
 """
+'''修改于原utility.py.py'''
 from __future__ import division
 
 from collections import namedtuple
 from itertools import chain
-
+from math import sqrt
 
 __all__ = (
     'Vector', 'MutableRecord', 'Direction', 'PositionAndLook', 'descriptor',
@@ -45,12 +46,13 @@ class Vector(namedtuple('BaseVector', ('x', 'y', 'z'))):
 
     def __floordiv__(self, other):
         return type(self)(self.x//other, self.y//other, self.z//other)
-
+    
     __div__ = __floordiv__
 
     def __repr__(self):
         return '%s(%r, %r, %r)' % (type(self).__name__, self.x, self.y, self.z)
-
+    def norm(self):
+        return sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 
 class MutableRecord(object):
     """An abstract base class providing namedtuple-like repr(), ==, hash(), and
