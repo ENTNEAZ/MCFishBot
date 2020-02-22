@@ -1,9 +1,9 @@
 """Minecraft data types that are used by packets, but don't have a specific
    network representation.
 """
-'''修改于原utility.py.py'''
-from __future__ import division
 
+from __future__ import division
+'''修改于原utility.py.py'''
 from collections import namedtuple
 from itertools import chain
 from math import sqrt
